@@ -408,7 +408,15 @@ const contactApi = new Elysia({ prefix: '/api' })
     );
 
 new Elysia()
-    .use(swagger())
+    .use(swagger({
+        documentation: {
+            info: {
+                title: 'Contact API',
+                version: '1.0.0',
+                description: 'Contact API project. Developed using Elysia framework, bun, and TypeScript.'
+            }
+        }
+    }))
     .use(contactApi)
     .decorate('db', new ContactDB())
     .listen(3000);
